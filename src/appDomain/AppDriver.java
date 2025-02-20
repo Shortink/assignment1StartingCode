@@ -5,7 +5,40 @@ public class AppDriver
 
 	public static void main( String[] args )
 	{
-		// TODO Auto-generated method stub
+		// Handle Program Arguments
+		// 2025FEB20 BBTERUEL
+		String argsFileName = null;
+		String argsType = null;
+		String argsSort = null;
+		
+		for (int i = 0; i < args.length; i++) {
+			// file name argument
+			if ("-f".equals(args[i].substring(0, 2)) || 
+					"-F".equals(args[i].substring(0, 2))) {
+				
+				argsFileName = args[i].substring(2);
+			}
+			
+			// type argument 
+			if ("-t".equals(args[i].substring(0, 2)) || 
+					"-T".equals(args[i].substring(0, 2))) {
+				
+				//TODO Error Handling. 
+				//Valid Arguments: v (volume), h (height) or a (base area)
+				
+				argsType = args[i].substring(2);
+			}
+			
+			// sort argument 
+			if ("-s".equals(args[i].substring(0, 2)) || 
+					"-S".equals(args[i].substring(0, 2))) {
+				
+				//TODO Error Handling. 
+				//Valid Arguments:  b (bubble), s (selection), i (insertion), m (merge), q (quick) or z(your choice of sorting algorithm) 
+				argsSort = args[i].substring(2);
+			}
+		}
+		
 
 		// refer to demo001 BasicFileIO.java for a simple example on how to
 		// read data from a text file
