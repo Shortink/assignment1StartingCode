@@ -4,56 +4,56 @@
 
 package shapes;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
-public class ShapeFileParser {
+public class ShapesFileParser {
 
-    public static Shape[] parseShapesFromFile(String filePath) {
-        File file = new File(filePath);
-        try (Scanner scanner = new Scanner(file)) {
-            int numberOfShapes = Integer.parseInt(scanner.nextLine().trim());
-            Shape[] shapes = new Shape[numberOfShapes];
+    public static List<IShapes> parseShapesFile(String filePath) throws IOException {
+        List<IShapes> shapes = new ArrayList<>();
+        try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                String[] parts = line.split(" ");
+                if (parts.length < 3) {
+                    System.err.println("Skipping invalid line: " + line);
+                    continue;
+                }
 
-            for (int i = 0; i < numberOfShapes; i++) {
-                if (scanner.hasNextLine()) {
-                    String line = scanner.nextLine();
-                    shapes[i] = createShapeFromLine(line);
+                String shapeType = parts[0];
+                double height = Double.parseDouble(parts[1]);
+                double dimension = Double.parseDouble(parts[2]);
+
+                switch (shapeType.toLowerCase()) {
+                    case "cylinder":
+                        shapes.add(new Cylinder(height, dimension));
+                        break;
+                    case "pyramid":
+                        shapes.add(new Pyramid(height, dimension));
+                        break;
+                    case "octagonalprism":
+                        shapes.add(new OctagonalPrism(height, dimension));
+                        break;
+                    case "pentagonalprism":
+                        shapes.add(new PentagonalPrism(height, dimension));
+                        break;
+                    case "squareprism":
+                        shapes.add(new SquarePrism(height, dimension));
+                        break;
+                    case "triangularprism":
+                        shapes.add(new TriangularPrism(height, dimension));
+                        break;
+                    default:
+                        System.err.println("Unsupported shape type: " + shapeType);
+                        break;
                 }
             }
-
-            return shapes;
-        } catch (FileNotFoundException e) {
-            System.out.println("Error: File not found - " + filePath);
-            return null;
+        } catch (NumberFormatException e) {
+            System.err.println("Error parsing number from file: " + e.getMessage());
         }
-    }
-
-    private static Shape createShapeFromLine(String line) {
-        String[] parts = line.split("\\s+");
-        String shapeType = parts[0];
-        double height = Double.parseDouble(parts[1]);
-        double dimension = Double.parseDouble(parts[2]);
-
-        switch (shapeType) {
-            case "Cylinder":
-                return new Cylinder(height, dimension);
-            case "Cone":
-                return new Cone(height, dimension);
-            case "SquarePrism":
-                return new SquarePrism(height, dimension);
-            case "TriangularPrism":
-                return new TriangularPrism(height, dimension);
-            case "PentagonalPrism":
-                return new PentagonalPrism(height, dimension);
-            case "OctagonalPrism":
-                return new OctagonalPrism(height, dimension);
-            case "Pyramid":
-                return new Pyramid(height, dimension);
-            default:
-                System.out.println("Unsupported shape type: " + shapeType);
-                return null;
-        }
+        return shapes;
     }
 }
