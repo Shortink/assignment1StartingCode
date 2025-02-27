@@ -2,13 +2,21 @@
  * @author Navi
  */
 
-package shapes;
+package utilities;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+
+import shapes.Cylinder;
+import shapes.IShapes;
+import shapes.OctagonalPrism;
+import shapes.PentagonalPrism;
+import shapes.Pyramid;
+import shapes.SquarePrism;
+import shapes.TriangularPrism;
 
 public class ShapesFileParser {
 

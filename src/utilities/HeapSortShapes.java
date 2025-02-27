@@ -1,6 +1,8 @@
-package shapes;
+package utilities;
 
 import java.util.Comparator;
+
+import shapes.IShapes;
 
 
 // This algorithm works in 2 main phases 1. Transform the input array into a max heap structure using heapify
