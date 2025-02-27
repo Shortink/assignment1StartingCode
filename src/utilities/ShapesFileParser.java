@@ -26,7 +26,7 @@ public class ShapesFileParser {
             int numShapes = Integer.parseInt(reader.readLine().trim());
             
             System.out.println("Parsing " + numShapes + " shapes...");
-            // bbteruel February 26, 2025
+            // bbteruel, Fazan February 26, 2025
             // Assignment specification item 6 – use Array not ArrayList
             AbstractShapes[] shapes = new AbstractShapes[numShapes];
     		String line;

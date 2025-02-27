@@ -1,6 +1,6 @@
 package utilities;
 
-public class benchmark {
+public class Benchmark {
 	long start, stop, duration;
 
 	/**
@@ -8,7 +8,7 @@ public class benchmark {
 	 * @param stop
 	 * @param duration
 	 */
-	public benchmark() {
+	public Benchmark() {
 		this.start = 0;
 		this.stop = 0;
 		this.duration = 0;
