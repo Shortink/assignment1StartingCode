@@ -9,6 +9,10 @@ package shapes;
 public abstract class AbstractShapes implements IShapes, Comparable<AbstractShapes>{
 	double height;
 
+	public double getHeight() {
+		return height;
+	}
+
 	/**
 	 * @param height
 	 */
