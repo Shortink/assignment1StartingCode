@@ -31,7 +31,7 @@ public class HeapSortShapes {
 	private static void heapify(IShapes[] array, int n, int i, Comparator<IShapes> comparator) {
 		int largest = i;
 		int left = 2 * i + 1;
-		int right = 2 * i + 1;
+		int right = 2 * i + 2;
 		
 		//if left child is larger than the root
 		if(left < n && comparator.compare(array[left], array[largest]) > 0) {
