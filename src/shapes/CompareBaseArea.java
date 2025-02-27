@@ -8,13 +8,13 @@ import java.util.Comparator;
  * @version 1.0
  */
 
-public class CompareBaseArea implements Comparator<IShapes>{
+public class CompareBaseArea implements Comparator<AbstractShapes>{
 	
 	@Override
-	public int compare(IShapes iShape1, IShapes iShape2) {
-		if ( iShape1.calcBaseArea() > iShape2.calcBaseArea() )
+	public int compare(AbstractShapes Shape1, AbstractShapes Shape2) {
+		if ( Shape1.calcBaseArea() > Shape2.calcBaseArea() )
 			return 1;
-		else if ( iShape1.calcBaseArea() < iShape2.calcBaseArea() )
+		else if ( Shape1.calcBaseArea() < Shape2.calcBaseArea() )
 			return -1;
 		else
 			return 0;

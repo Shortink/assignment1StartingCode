@@ -8,13 +8,13 @@ import java.util.Comparator;
  * @version 1.0
  */
 
-public class CompareVolume implements Comparator<IShapes>{
+public class CompareVolume implements Comparator<AbstractShapes>{
 	
 	@Override
-	public int compare(IShapes iShape1, IShapes iShape2) {
-		if ( iShape1.calcVolume() > iShape2.calcVolume() )
+	public int compare(AbstractShapes Shape1, AbstractShapes Shape2) {
+		if ( Shape1.calcVolume() > Shape2.calcVolume() )
 			return 1;
-		else if ( iShape1.calcVolume() < iShape2.calcVolume() )
+		else if ( Shape1.calcVolume() < Shape2.calcVolume() )
 			return -1;
 		else
 			return 0;
