@@ -9,6 +9,10 @@ package shapes;
 public abstract class AbstractPrisms extends AbstractShapes{
 	double side;
 
+	public double getSide() {
+		return side;
+	}
+
 	/**
 	 * @param height
 	 * @param side
